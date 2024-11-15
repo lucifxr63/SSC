@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--=============== FAVICON ===============-->
+    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+
+    <!--=============== REMIXICON ===============-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="../assets/css/styles.css">
+
+
+    <!-- Mapbox CSS y JavaScript -->
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js"></script>
+
+    <title>PROTOTIPO PAGINA ECOMERCE - Usuario</title>
+</head>
+
+<body>
+    <!--==================== HEADER ====================-->
+    <header class="header" id="header" >
+        <nav class="nav container">
+            <a href="#" class="nav__logo">
+                <img src="assets/img/imagenpag2.png" alt="logo"> *MARCA POR DEFINIR*
+            </a>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="#home" class="nav__link active-link">Home</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#program" class="nav__link">Servicios</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#data" class="nav__link">Datos</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#vehicles" class="nav__link">Vehículos</a>
+                    </li>
+
+                    <div class="nav__link">
+                        <a href="#footer" class="button nav__button">Registrate Ahora</a>
+                    </div>
+                    <li class="nav__item">
+                        <a href="../index.html" class="nav__link">Cerrar Sesión</a> <!-- Enlace para cerrar sesión -->
+                    </li>
+                </ul>
+
+                <div class="nav__close" id="nav-close">
+                    <i class="ri-close-line"></i>
+                </div>
+            </div>
+
+            <!-- Toggle button -->
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="ri-menu-line"></i>
+            </div>
+        </nav>
+    </header>
+
+
+    <!--==================== MAIN ====================-->
+    <main class="main">
+        <!--==================== HOME ====================-->
+        <section class="home section" id="home" >
+            <!-- Contenido del Home -->
+        </section>
+
+        <!--==================== LOGOS ====================-->
+        <section class="logos section" >
+            <!-- Contenido de Logos -->
+        </section>
+
+        <!--==================== MAPA ====================-->
+        <section class="program section" id="program">
+            <div class="container">
+                <div class="section__data">
+                    <h2 class="section__subtitle">Ubicación en Tiempo Real</h2>
+                    <div class="section__titles">
+                        <h1 class="section__title-border">MAPA DE</h1>
+                        <h1 class="section__title">RASTREO</h1>
+                    </div>
+                </div>
+
+                <!-- Contenedor del mapa -->
+                <div id="map" style="height: 500px; border-radius: 8px;"></div>
+            </div>
+        </section>
+
+
+        <!--==================== DATOS ====================-->
+        <section class="data section" id="data" >
+            <div class="container">
+                <div class="section__data">
+                    <h2 class="section__subtitle">Nuestros Datos</h2>
+                    <div class="section__titles">
+                        <h1 class="section__title-border">INFORMACIÓN</h1>
+                        <h1 class="section__title">DE TU VEHÍCULO</h1>
+                    </div>
+                </div>
+
+                <div class="data__container grid">
+                    <!-- Estado del Vehículo -->
+                    <article class="data__card">
+                        <div class="data__shape">
+                            <img src="assets/img/status.png" alt="Monitoreo de Estado" class="data__img">
+                        </div>
+                        <h3 class="data__title">Estado del Vehículo</h3>
+                        <p class="data__description">
+                            Sistema de motor: Óptimo <br>
+                            Presión de llantas: Normal <br>
+                            Temperatura del motor: 90°C (Normal) <br>
+                            Nivel de aceite: Suficiente <br>
+                            Última revisión: 12/09/2024
+                        </p>
+                        <a href="#" class="data__button">
+                            <i class="ri-arrow-right-line"></i>
+                        </a>
+                    </article>
+
+                    <!-- Ubicación Actual -->
+                    <article class="data__card">
+                        <div class="data__shape">
+                            <img src="assets/img/location.png" alt="Ubicación Actual" class="data__img">
+                        </div>
+                        <h3 class="data__title">Ubicación Actual</h3>
+                        <p class="data__description">
+                            Coordenadas: -33.45694, -70.64827 <br>
+                            Dirección: Av. Apoquindo 3000, Santiago, Chile <br>
+                            Última actualización: 15/11/2024 10:45 AM
+                        </p>
+                        <a href="#" class="data__button">
+                            <i class="ri-arrow-right-line"></i>
+                        </a>
+                    </article>
+
+                    <!-- Historial de Rutas -->
+                    <article class="data__card">
+                        <div class="data__shape">
+                            <img src="assets/img/routes.png" alt="Historial de Rutas" class="data__img">
+                        </div>
+                        <h3 class="data__title">Historial de Rutas</h3>
+                        <p class="data__description">
+                            Últimos recorridos:<br>
+                            - 14/11/2024: Santiago - Viña del Mar (120 km)<br>
+                            - 13/11/2024: Providencia - Las Condes (10 km)<br>
+                            - 12/11/2024: Santiago Centro - La Florida (15 km)
+                        </p>
+                        <a href="#" class="data__button">
+                            <i class="ri-arrow-right-line"></i>
+                        </a>
+                    </article>
+
+                    <!-- Estado de la Batería -->
+                    <article class="data__card">
+                        <div class="data__shape">
+                            <img src="assets/img/battery.png" alt="Estado de la Batería" class="data__img">
+                        </div>
+                        <h3 class="data__title">Estado de la Batería</h3>
+                        <p class="data__description">
+                            Carga actual: 75% <br>
+                            Voltaje: 12.8 V <br>
+                            Última carga completa: 10/11/2024 <br>
+                            Tiempo estimado para recarga: 15 días
+                        </p>
+                        <a href="#" class="data__button">
+                            <i class="ri-arrow-right-line"></i>
+                        </a>
+                    </article>
+
+                    <!-- Kilometraje -->
+                    <article class="data__card">
+                        <div class="data__shape">
+                            <img src="assets/img/mileage.png" alt="Kilometraje" class="data__img">
+                        </div>
+                        <h3 class="data__title">Kilometraje</h3>
+                        <p class="data__description">
+                            Kilometraje total: 52,300 km <br>
+                            Kilometraje desde el último servicio: 2,000 km <br>
+                            Próximo servicio recomendado: 55,000 km
+                        </p>
+                        <a href="#" class="data__button">
+                            <i class="ri-arrow-right-line"></i>
+                        </a>
+                    </article>
+
+                    <!-- Alertas de Mantenimiento -->
+                    <article class="data__card">
+                        <div class="data__shape">
+                            <img src="assets/img/maintenance.png" alt="Alertas de Mantenimiento" class="data__img">
+                        </div>
+                        <h3 class="data__title">Alertas de Mantenimiento</h3>
+                        <p class="data__description">
+                            Próximo cambio de aceite: 15/12/2024 <br>
+                            Cambio de filtro de aire recomendado <br>
+                            Última revisión general: 10/10/2024
+                        </p>
+                        <a href="#" class="data__button">
+                            <i class="ri-arrow-right-line"></i>
+                        </a>
+                    </article>
+
+                    <!-- Alertas de Seguridad -->
+                    <article class="data__card">
+                        <div class="data__shape">
+                            <img src="assets/img/alerts.png" alt="Alertas de Seguridad" class="data__img">
+                        </div>
+                        <h3 class="data__title">Alertas de Seguridad</h3>
+                        <p class="data__description">
+                            Última alerta: 12/11/2024 3:15 PM - Movimiento detectado sin autorización <br>
+                            Notificaciones activas: Movimientos y acceso no autorizado <br>
+                            Estado del sistema de seguridad: Activo
+                        </p>
+                        <a href="#" class="data__button">
+                            <i class="ri-arrow-right-line"></i>
+                        </a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!--==================== VEHÍCULOS ====================-->
+        <section class="vehicles section" id="vehicles" >
+            <div class="container">
+                <div class="section__data">
+                    <h2 class="section__subtitle">Vehículos</h2>
+                    <div class="section__titles">
+                        <h1 class="section__title-border">INFORMACIÓN</h1>
+                        <h1 class="section__title">DEL VEHÍCULO</h1>
+                    </div>
+                </div>
+
+                <!-- Botón para agregar vehículos -->
+                <button onclick="openModal()" class="add-vehicle-button">Agregar Vehículo</button>
+
+                <!-- Modal para agregar un nuevo vehículo -->
+                <div id="vehicleModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeModal()">&times;</span>
+                        <h2>Agregar Nuevo Vehículo</h2>
+                        <form id="vehicleForm">
+                            <label for="vehicleName">Nombre del Vehículo:</label>
+                            <input type="text" id="vehicleName" required>
+
+                            <label for="vehicleModel">Modelo:</label>
+                            <input type="text" id="vehicleModel" required>
+
+                            <label for="vehicleYear">Año:</label>
+                            <input type="number" id="vehicleYear" required>
+
+                            <label for="vehicleStatus">Estado:</label>
+                            <input type="text" id="vehicleStatus" required>
+
+                            <label for="vehicleDetails">Detalles:</label>
+                            <textarea id="vehicleDetails" required></textarea>
+
+                            <button type="button" onclick="addVehicle()">Guardar Vehículo</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Contenedor de Vehículos -->
+                <div id="vehicles-container" class="vehicles__container grid"></div>
+            </div>
+        </section>
+        <!--==================== PIE DE PÁGINA ====================-->
+        <footer class="footer section" id="footer" >
+            <!-- Contenido del pie de página -->
+        </footer>
+
+        <!--========== SCROLL UP ==========-->
+        <a href="#" class="scrollup" id="scroll-up">
+            <i class="ri-arrow-up-line"></i>
+        </a>
+
+        <!--=============== SCRIPTS ===============-->
+        <script src="../assets/js/scrollreveal.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+        <script src="../assets/js/main.js"></script>
+</body>
+
+</html>
+
+<!--=============== MAPA ===============-->
+<script>
+    // Inicialización de Mapbox con el token de acceso
+    mapboxgl.accessToken = 'pk.eyJ1IjoibHVjaWFuby0xMjMiLCJhIjoiY20zaHY5eW81MGlrcTJqcHgwdzBxNWliaSJ9.OWyZG44vDb8Drx-CnW5YTQ';
+
+    const map = new mapboxgl.Map({
+        container: 'map', // ID del contenedor del mapa
+        style: 'mapbox://styles/mapbox/streets-v11', // Estilo del mapa
+        center: [-70.64827, -33.45694], // Coordenadas iniciales (Santiago, Chile)
+        zoom: 12 // Nivel de zoom inicial
+    });
+
+    // Coordenadas de ubicación predeterminada en Santiago, Chile
+    const defaultCoordinates = [-70.64827, -33.45694];
+
+    // Intentar obtener la ubicación del usuario
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            function (position) {
+                const userCoordinates = [position.coords.longitude, position.coords.latitude];
+
+                map.setCenter(userCoordinates);
+
+                new mapboxgl.Marker()
+                    .setLngLat(userCoordinates)
+                    .addTo(map);
+            },
+            function (error) {
+                console.error("Error obteniendo la ubicación:", error);
+                alert(`No se pudo obtener la ubicación. Mostrando ubicación predeterminada en Santiago.`);
+
+                // Centrar el mapa en la ubicación predeterminada y agregar un marcador
+                map.setCenter(defaultCoordinates);
+
+                new mapboxgl.Marker()
+                    .setLngLat(defaultCoordinates)
+                    .addTo(map);
+            }
+        );
+    } else {
+        console.error("Geolocalización no soportada por el navegador.");
+        alert("Tu navegador no soporta la geolocalización. Mostrando ubicación predeterminada en Santiago.");
+
+        // Centrar el mapa en la ubicación predeterminada y agregar un marcador
+        map.setCenter(defaultCoordinates);
+
+        new mapboxgl.Marker()
+            .setLngLat(defaultCoordinates)
+            .addTo(map);
+    }
+</script>
+<!--=============== VEHICULOS ===============-->
+<script>
+    // Función para abrir el modal
+    function openModal() {
+        document.getElementById("vehicleModal").style.display = "block";
+    }
+
+    // Función para cerrar el modal
+    function closeModal() {
+        document.getElementById("vehicleModal").style.display = "none";
+    }
+
+    // Función para agregar un nuevo vehículo y mostrarlo en la página
+    function addVehicle() {
+        const name = document.getElementById("vehicleName").value;
+        const model = document.getElementById("vehicleModel").value;
+        const year = document.getElementById("vehicleYear").value;
+        const status = document.getElementById("vehicleStatus").value;
+        const details = document.getElementById("vehicleDetails").value;
+
+        const vehiclesContainer = document.getElementById("vehicles-container");
+
+        // Crear el contenedor del vehículo
+        const vehicleContainer = document.createElement("div");
+        vehicleContainer.classList.add("vehicle-container");
+
+        vehicleContainer.innerHTML = `
+            <div class="vehicle-header">
+                <div class="vehicle-status">Estado: ${status}</div>
+                <div class="vehicle-info">Nombre: ${name} <br> Modelo: ${model} <br> Año: ${year}</div>
+            </div>
+            <div class="vehicle-body">
+                <div class="vehicle-details">Detalles: ${details}</div>
+                <div class="vehicle-image">
+                    <img src="assets/img/vehicle_placeholder.png" alt="Imagen del Vehículo">
+                </div>
+            </div>
+        `;
+
+        // Agregar el nuevo vehículo al contenedor de vehículos
+        vehiclesContainer.appendChild(vehicleContainer);
+
+        // Cerrar el modal y limpiar el formulario
+        closeModal();
+        document.getElementById("vehicleForm").reset();
+    }
+
+    // Cerrar el modal cuando se hace clic fuera de él
+    window.onclick = function (event) {
+        const modal = document.getElementById("vehicleModal");
+        if (event.target == modal) {
+            closeModal();
+        }
+    };
+</script>

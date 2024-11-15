@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <link rel="shortcut icon" href="../assets/img/favicon.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+    <div class="login__container">
+        <div class="login__content">
+            <a href="../index.html" class="login__logo">
+                <img src="../assets/img/imagenpag2.png" alt="Logo"> *MARCA POR DEFINIR*
+            </a>
+            <h2 class="login__title">Iniciar Sesión</h2>
+            <!-- Modificación del action para redirigir al index_usuario.html -->
+            <form action="./index_usuario.html" method="get" class="login__form">
+
+                <div class="login__box">
+                    <input type="text" name="username" placeholder="Usuario" class="login__input" required>
+                    <i class="ri-user-line login__icon"></i>
+                </div>
+                <div class="login__box">
+                    <input type="password" name="password" placeholder="Contraseña" class="login__input" required>
+                    <i class="ri-lock-2-line login__icon"></i>
+                </div>
+                <button type="submit" class="button button__flex login__button">
+                    Iniciar Sesión <i class="ri-login-circle-line"></i>
+                </button>
+                <a href="#" class="login__forgot">¿Olvidaste tu contraseña?</a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
