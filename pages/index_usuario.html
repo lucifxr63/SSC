@@ -24,7 +24,7 @@
 
 <body>
     <!--==================== HEADER ====================-->
-    <header class="header" id="header" >
+    <header class="header" id="header">
         <nav class="nav container">
             <a href="#" class="nav__logo">
                 <img src="assets/img/imagenpag2.png" alt="logo"> *MARCA POR DEFINIR*
@@ -69,13 +69,167 @@
     <!--==================== MAIN ====================-->
     <main class="main">
         <!--==================== HOME ====================-->
-        <section class="home section" id="home" >
+        <section class="home section" id="home">
             <!-- Contenido del Home -->
         </section>
 
-        <!--==================== LOGOS ====================-->
-        <section class="logos section" >
-            <!-- Contenido de Logos -->
+        <!--==================== SALUDO Y BOTONES ====================-->
+        <section class="welcome section">
+            <div class="container">
+                <!-- Saludo al usuario -->
+                <div class="welcome__greeting">
+                    <h2>¡Hola, [Nombre del Usuario]!</h2>
+                    <p>Bienvenido a nuestra plataforma. ¿En qué podemos ayudarte hoy?</p>
+                </div>
+
+                <!-- Botones -->
+                <div class="welcome__buttons">
+
+                    <!-- Botón para abrir el modal -->
+                    <button onclick="openProfileModal()" class="profile-button welcome__button">Ver Perfil</button>
+
+                    <!-- Modal de Perfil -->
+                    <div id="profileModal" class="modal">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h2>Perfil del Usuario</h2>
+                                <span class="close" onclick="closeProfileModal()">&times;</span>
+                            </div>
+
+                            <!-- Información de Contacto -->
+                            <div class="profile-section">
+                                <h3>Información de Contacto</h3>
+                                <p><span>Teléfono:</span> +56 9 1234 5678</p>
+                                <p><span>Correo Electrónico:</span> usuario@example.com</p>
+                                <p><span>Dirección:</span> Av. Apoquindo 3000, Santiago, Chile</p>
+                            </div>
+
+                            <!-- Historial de Actividad -->
+                            <div class="profile-section">
+                                <h3>Historial de Actividad</h3>
+                                <p><span>Último inicio de sesión:</span> 15/11/2024 10:45 AM</p>
+                                <p><span>Actividades Recientes:</span> Añadió un nuevo vehículo el 14/11/2024</p>
+                            </div>
+
+                            <!-- Vehículos Registrados -->
+                            <div class="profile-section">
+                                <h3>Vehículos Registrados</h3>
+                                <p><span>Vehículo 1:</span> Toyota Hilux 2022 - Buen estado</p>
+                                <p><span>Vehículo 2:</span> Ford Ranger 2021 - Mantenimiento requerido</p>
+                            </div>
+
+                            <!-- Preferencias de Notificación -->
+                            <div class="profile-section">
+                                <h3>Preferencias de Notificación</h3>
+                                <p><span>Alertas de mantenimiento:</span> Activas</p>
+                                <p><span>Notificaciones de ubicación:</span> Desactivadas</p>
+                            </div>
+
+                            <!-- Información de Seguridad -->
+                            <div class="profile-section">
+                                <h3>Información de Seguridad</h3>
+                                <p><span>Último cambio de contraseña:</span> 01/10/2024</p>
+                                <p><span>Autenticación de dos factores:</span> Activada</p>
+                            </div>
+
+                            <!-- Configuración de Privacidad -->
+                            <div class="profile-section">
+                                <h3>Configuración de Privacidad</h3>
+                                <p><span>Visibilidad del perfil:</span> Solo para contactos</p>
+                                <p><span>Compartir ubicación en tiempo real:</span> Activo para familiares</p>
+                            </div>
+
+                            <!-- Historial de Soporte Técnico -->
+                            <div class="profile-section">
+                                <h3>Historial de Soporte Técnico</h3>
+                                <p><span>Ticket #12345:</span> Resuelto - Problema con ubicación (10/11/2024)</p>
+                                <p><span>Ticket #67890:</span> En progreso - Consulta sobre mantenimiento (12/11/2024)
+                                </p>
+                            </div>
+
+                            <!-- Planes de Servicio Activos -->
+                            <div class="profile-section">
+                                <h3>Planes de Servicio Activos</h3>
+                                <p><span>Plan Premium:</span> Activo hasta 12/12/2024</p>
+                                <p><span>Plan Básico:</span> Expirado el 10/10/2024</p>
+                            </div>
+
+                            <!-- Preferencias de Idioma y Zona Horaria -->
+                            <div class="profile-section">
+                                <h3>Preferencias de Idioma y Zona Horaria</h3>
+                                <p><span>Idioma:</span> Español</p>
+                                <p><span>Zona Horaria:</span> GMT-3 (Chile)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="welcome__button">Mis Vehículos</button>
+                    <button class="welcome__button">Soporte Técnico</button>
+                    <button class="welcome__button">Configuración</button>
+                </div>
+            </div>
+        </section>
+
+        <!--==================== VEHÍCULOS ====================-->
+        <section class="vehicles section" id="vehicles">
+            <div class="container">
+                <div class="section__data">
+                    <h2 class="section__subtitle">Vehículos</h2>
+                    <div class="section__titles">
+                        <h1 class="section__title-border">INFORMACIÓN</h1>
+                        <h1 class="section__title">DEL VEHÍCULO</h1>
+                    </div>
+                </div>
+
+                <!-- Botón para agregar vehículos -->
+                <button onclick="openModal()" class="add-vehicle-button">Agregar Vehículo</button>
+
+                <!-- Modal para agregar un nuevo vehículo -->
+                <div id="vehicleModal" class="modal" style="display:none;">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeModal()">&times;</span>
+                        <h2>Agregar Nuevo Vehículo</h2>
+                        <form id="vehicleForm">
+                            <label for="vehicleName">Nombre del Vehículo:</label>
+                            <input type="text" id="vehicleName" required>
+
+                            <label for="vehicleModel">Modelo:</label>
+                            <input type="text" id="vehicleModel" required>
+
+                            <label for="vehicleYear">Año:</label>
+                            <input type="number" id="vehicleYear" required>
+
+                            <label for="vehicleStatus">Estado:</label>
+                            <input type="text" id="vehicleStatus" required>
+
+                            <label for="vehiclePlate">Patente:</label>
+                            <input type="text" id="vehiclePlate" required>
+
+                            <label for="vehicleDetails">Detalles:</label>
+                            <textarea id="vehicleDetails" required></textarea>
+
+                            <button type="button" onclick="addVehicle()">Guardar Vehículo</button>
+                        </form>
+                    </div>
+                </div>
+
+
+                <!-- Contenedor de Vehículos -->
+                <div id="vehicles-container" class="vehicles__container grid">
+                    <div class="vehicle-card">
+                        <div class="vehicle-info">
+                            <h3 class="vehicle-name">Nissan GTR</h3>
+                            <p class="vehicle-plate">KZ-WK-42</p> <!-- Nueva línea para la patente -->
+                            <p class="vehicle-status">Estado: Activo</p>
+                            <p class="vehicle-details">Detalles: Motor en buen estado, frenos revisados, llantas nuevas.
+                            </p>
+                        </div>
+                        <div class="vehicle-image">
+                            <img src="../assets/img/auto1.png" alt="Imagen del Vehículo">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </section>
 
         <!--==================== MAPA ====================-->
@@ -96,7 +250,7 @@
 
 
         <!--==================== DATOS ====================-->
-        <section class="data section" id="data" >
+        <section class="data section" id="data">
             <div class="container">
                 <div class="section__data">
                     <h2 class="section__subtitle">Nuestros Datos</h2>
@@ -110,7 +264,7 @@
                     <!-- Estado del Vehículo -->
                     <article class="data__card">
                         <div class="data__shape">
-                            <img src="assets/img/status.png" alt="Monitoreo de Estado" class="data__img">
+                            <i class="ri-car-line data__icon"></i>
                         </div>
                         <h3 class="data__title">Estado del Vehículo</h3>
                         <p class="data__description">
@@ -128,7 +282,7 @@
                     <!-- Ubicación Actual -->
                     <article class="data__card">
                         <div class="data__shape">
-                            <img src="assets/img/location.png" alt="Ubicación Actual" class="data__img">
+                            <i class="ri-map-pin-line data__icon"></i>
                         </div>
                         <h3 class="data__title">Ubicación Actual</h3>
                         <p class="data__description">
@@ -144,7 +298,7 @@
                     <!-- Historial de Rutas -->
                     <article class="data__card">
                         <div class="data__shape">
-                            <img src="assets/img/routes.png" alt="Historial de Rutas" class="data__img">
+                            <i class="ri-road-map-line data__icon"></i>
                         </div>
                         <h3 class="data__title">Historial de Rutas</h3>
                         <p class="data__description">
@@ -161,7 +315,7 @@
                     <!-- Estado de la Batería -->
                     <article class="data__card">
                         <div class="data__shape">
-                            <img src="assets/img/battery.png" alt="Estado de la Batería" class="data__img">
+                            <i class="ri-battery-2-line data__icon"></i>
                         </div>
                         <h3 class="data__title">Estado de la Batería</h3>
                         <p class="data__description">
@@ -178,7 +332,7 @@
                     <!-- Kilometraje -->
                     <article class="data__card">
                         <div class="data__shape">
-                            <img src="assets/img/mileage.png" alt="Kilometraje" class="data__img">
+                            <i class="ri-dashboard-3-line data__icon"></i>
                         </div>
                         <h3 class="data__title">Kilometraje</h3>
                         <p class="data__description">
@@ -194,7 +348,7 @@
                     <!-- Alertas de Mantenimiento -->
                     <article class="data__card">
                         <div class="data__shape">
-                            <img src="assets/img/maintenance.png" alt="Alertas de Mantenimiento" class="data__img">
+                            <i class="ri-tools-line data__icon"></i>
                         </div>
                         <h3 class="data__title">Alertas de Mantenimiento</h3>
                         <p class="data__description">
@@ -210,7 +364,7 @@
                     <!-- Alertas de Seguridad -->
                     <article class="data__card">
                         <div class="data__shape">
-                            <img src="assets/img/alerts.png" alt="Alertas de Seguridad" class="data__img">
+                            <i class="ri-shield-user-line data__icon"></i>
                         </div>
                         <h3 class="data__title">Alertas de Seguridad</h3>
                         <p class="data__description">
@@ -226,52 +380,103 @@
             </div>
         </section>
 
-        <!--==================== VEHÍCULOS ====================-->
-        <section class="vehicles section" id="vehicles" >
+        <!--==================== HERRAMIENTAS ====================-->
+        <section class="tools section" id="tools">
             <div class="container">
                 <div class="section__data">
-                    <h2 class="section__subtitle">Vehículos</h2>
+                    <h2 class="section__subtitle">Herramientas</h2>
                     <div class="section__titles">
                         <h1 class="section__title-border">INFORMACIÓN</h1>
-                        <h1 class="section__title">DEL VEHÍCULO</h1>
+                        <h1 class="section__title">ADICIONAL</h1>
                     </div>
                 </div>
 
-                <!-- Botón para agregar vehículos -->
-                <button onclick="openModal()" class="add-vehicle-button">Agregar Vehículo</button>
-
-                <!-- Modal para agregar un nuevo vehículo -->
-                <div id="vehicleModal" class="modal">
-                    <div class="modal-content">
-                        <span class="close" onclick="closeModal()">&times;</span>
-                        <h2>Agregar Nuevo Vehículo</h2>
-                        <form id="vehicleForm">
-                            <label for="vehicleName">Nombre del Vehículo:</label>
-                            <input type="text" id="vehicleName" required>
-
-                            <label for="vehicleModel">Modelo:</label>
-                            <input type="text" id="vehicleModel" required>
-
-                            <label for="vehicleYear">Año:</label>
-                            <input type="number" id="vehicleYear" required>
-
-                            <label for="vehicleStatus">Estado:</label>
-                            <input type="text" id="vehicleStatus" required>
-
-                            <label for="vehicleDetails">Detalles:</label>
-                            <textarea id="vehicleDetails" required></textarea>
-
-                            <button type="button" onclick="addVehicle()">Guardar Vehículo</button>
-                        </form>
-                    </div>
+                <!-- Botones para diferentes herramientas -->
+                <div class="tools__container">
+                    <button onclick="openModal('alertsModal')" class="tools__button">Alertas y Notificaciones</button>
+                    <button onclick="openModal('maintenanceModal')" class="tools__button">Mantenimiento
+                        Avanzado</button>
+                    <button onclick="openModal('performanceModal')" class="tools__button">Rendimiento del
+                        Vehículo</button>
+                    <button onclick="openModal('financialModal')" class="tools__button">Datos Financieros</button>
+                    <button onclick="openModal('geolocationModal')" class="tools__button">Geolocalización</button>
+                    <button onclick="openModal('analysisModal')" class="tools__button">Análisis y Estadísticas</button>
+                    <button onclick="openModal('preferencesModal')" class="tools__button">Preferencias del
+                        Usuario</button>
+                    <button onclick="openModal('supportModal')" class="tools__button">Soporte y Documentación</button>
                 </div>
-
-                <!-- Contenedor de Vehículos -->
-                <div id="vehicles-container" class="vehicles__container grid"></div>
             </div>
         </section>
+
+        <!-- Modal templates for each tool -->
+        <div id="alertsModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('alertsModal')">&times;</span>
+                <h3>Alertas y Notificaciones</h3>
+                <p>Aquí puedes ver el historial de alertas y configurar tus notificaciones.</p>
+            </div>
+        </div>
+
+        <div id="maintenanceModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('maintenanceModal')">&times;</span>
+                <h3>Mantenimiento Avanzado</h3>
+                <p>Información detallada sobre calendario de mantenimiento, repuestos y mecánicos.</p>
+            </div>
+        </div>
+
+        <div id="performanceModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('performanceModal')">&times;</span>
+                <h3>Rendimiento del Vehículo</h3>
+                <p>Estadísticas sobre consumo de combustible, eficiencia y más.</p>
+            </div>
+        </div>
+
+        <div id="financialModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('financialModal')">&times;</span>
+                <h3>Datos Financieros</h3>
+                <p>Resumen de costos de mantenimiento, presupuesto y otros gastos.</p>
+            </div>
+        </div>
+
+        <div id="geolocationModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('geolocationModal')">&times;</span>
+                <h3>Geolocalización</h3>
+                <p>Rutas recientes, zonas seguras y configuraciones de geolocalización.</p>
+            </div>
+        </div>
+
+        <div id="analysisModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('analysisModal')">&times;</span>
+                <h3>Análisis y Estadísticas</h3>
+                <p>Comparación de costos, rendimiento y proyecciones de mantenimiento.</p>
+            </div>
+        </div>
+
+        <div id="preferencesModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('preferencesModal')">&times;</span>
+                <h3>Preferencias del Usuario</h3>
+                <p>Configura tus preferencias de visualización, temas y notificaciones.</p>
+            </div>
+        </div>
+
+        <div id="supportModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('supportModal')">&times;</span>
+                <h3>Soporte y Documentación</h3>
+                <p>Acceso a guías de usuario, contacto de soporte y FAQs.</p>
+            </div>
+        </div>
+
+
+
         <!--==================== PIE DE PÁGINA ====================-->
-        <footer class="footer section" id="footer" >
+        <footer class="footer section" id="footer">
             <!-- Contenido del pie de página -->
         </footer>
 
@@ -284,6 +489,8 @@
         <script src="../assets/js/scrollreveal.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
         <script src="../assets/js/main.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
 </body>
 
 </html>
@@ -339,7 +546,6 @@
             .addTo(map);
     }
 </script>
-<!--=============== VEHICULOS ===============-->
 <script>
     // Función para abrir el modal
     function openModal() {
@@ -357,26 +563,27 @@
         const model = document.getElementById("vehicleModel").value;
         const year = document.getElementById("vehicleYear").value;
         const status = document.getElementById("vehicleStatus").value;
+        const plate = document.getElementById("vehiclePlate").value;
         const details = document.getElementById("vehicleDetails").value;
 
         const vehiclesContainer = document.getElementById("vehicles-container");
 
         // Crear el contenedor del vehículo
         const vehicleContainer = document.createElement("div");
-        vehicleContainer.classList.add("vehicle-container");
+        vehicleContainer.classList.add("vehicle-card");
 
         vehicleContainer.innerHTML = `
-            <div class="vehicle-header">
-                <div class="vehicle-status">Estado: ${status}</div>
-                <div class="vehicle-info">Nombre: ${name} <br> Modelo: ${model} <br> Año: ${year}</div>
-            </div>
-            <div class="vehicle-body">
-                <div class="vehicle-details">Detalles: ${details}</div>
-                <div class="vehicle-image">
-                    <img src="assets/img/vehicle_placeholder.png" alt="Imagen del Vehículo">
-                </div>
-            </div>
-        `;
+        <div class="vehicle-info">
+            <h3 class="vehicle-name">${name}</h3>
+            <p class="vehicle-model">Modelo: ${model} (${year})</p>
+            <p class="vehicle-plate">Patente: ${plate}</p>
+            <p class="vehicle-status">Estado: ${status}</p>
+            <p class="vehicle-details">Detalles: ${details}</p>
+        </div>
+        <div class="vehicle-image">
+            <img src="assets/img/vehicle_placeholder.png" alt="Imagen del Vehículo">
+        </div>
+    `;
 
         // Agregar el nuevo vehículo al contenedor de vehículos
         vehiclesContainer.appendChild(vehicleContainer);
@@ -386,6 +593,7 @@
         document.getElementById("vehicleForm").reset();
     }
 
+
     // Cerrar el modal cuando se hace clic fuera de él
     window.onclick = function (event) {
         const modal = document.getElementById("vehicleModal");
@@ -393,4 +601,26 @@
             closeModal();
         }
     };
+
+    //<!--=============== MAPA ===============-->
+
+
+    // Función para abrir el modal de perfil
+    function openProfileModal() {
+        document.getElementById("profileModal").style.display = "block";
+    }
+
+    // Función para cerrar el modal de perfil
+    function closeProfileModal() {
+        document.getElementById("profileModal").style.display = "none";
+    }
+
+    // Cerrar el modal cuando se hace clic fuera de él
+    window.onclick = function (event) {
+        const modal = document.getElementById("profileModal");
+        if (event.target == modal) {
+            closeProfileModal();
+        }
+    };
+
 </script>

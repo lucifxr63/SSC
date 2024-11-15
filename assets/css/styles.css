@@ -930,23 +930,98 @@ img {
 }
 
 /*=============== INDEX USUARIO ===============*/
+/*=============== DATOS ===============*/
 
 /* Estructura de dos columnas para el apartado de datos */
 .data__container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  /* Dos columnas */
   gap: 2rem;
-  /* Espacio entre las columnas */
 }
 
 .data__card {
-  background-color: #fff;
+  background-color: #1a1a1a;
   padding: 1.5rem;
   border-radius: 0.5rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  color: #e0e0e0;
+  position: relative; /* Necesario para posicionar la flecha */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
+.data__icon {
+  font-size: 2.5rem;
+  color: #ff4d4d;
+}
+
+.data__title {
+  font-size: 1.3rem;
+  color: #4a90e2;
+  text-align: center; /* Centra el título */
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.data__description {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #cccccc;
+  text-align: center; /* Centra el contenido de descripción */
+  margin-bottom: 1.5rem;
+}
+
+
+
+.data__button {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  color: #4a90e2;
+  font-size: 1rem;
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.3s ease;
+}
+.data__button i {
+  margin-left: 0.3rem;
+  font-size: 1.2rem;
+}
+
+
+.data__shape {
+  align-self: flex-start; /* Coloca el icono en la esquina superior izquierda */
+  margin-bottom: 0.5rem;
+}
+
+
+/* Efecto de hover en las tarjetas */
+.data__card:hover {
+  transform: translateY(-8px);
+  /* Elevación sutil */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  /* Sombra más intensa */
+}
+
+.data__card:hover .data__icon {
+  color: #ff6666;
+  /* Cambiar el color del icono al hacer hover */
+}
+
+.data__card:hover .data__button {
+  color: #ff6666; /* Cambia el color de la flecha al hacer hover en la tarjeta */
+}
+
+/* Ajustes para dispositivos móviles */
+@media (max-width: 768px) {
+  .data__container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*=============== MAPA ===============*/
 #map {
   width: 100%;
   height: 500px;
@@ -985,6 +1060,7 @@ img {
     font-size: var(--smaller-font-size);
   }
 }
+
 /*=============== MODAL ===============*/
 /* Estilos para el modal */
 .modal {
@@ -997,16 +1073,20 @@ img {
   height: 100%;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  align-items: center;
 }
 
 .modal-content {
-  background-color: #fefefe;
-  margin: 15% auto;
+  background-color: #333;
+  color: #fff;
+  margin: auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
-  max-width: 400px;
+  width: 90%;
+  max-width: 600px;
   border-radius: 8px;
+  font-family: Arial, sans-serif;
 }
 
 .close {
@@ -1019,132 +1099,408 @@ img {
 
 .close:hover,
 .close:focus {
-  color: black;
+  color: #fff;
   text-decoration: none;
   cursor: pointer;
 }
 
-/* Estilos para el formulario dentro del modal */
-.modal-content form {
-  display: flex;
-  flex-direction: column;
-}
-
-.modal-content label {
-  margin-top: 10px;
-}
-
-.modal-content input,
-.modal-content textarea,
-.modal-content button {
-  margin-top: 5px;
-  padding: 8px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-/*=============== VEHICULOS ===============*/
-/* Estilos para los vehículos */
-.vehicle-container {
-  border: 2px solid black;
-  padding: 10px;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-  background-color: #f9f9f9;
-}
-
-.vehicle-header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-}
-
-.vehicle-status,
-.vehicle-info {
-  width: 48%;
+/* Estilos para las secciones del perfil en el modal */
+.profile-section {
+  margin-bottom: 15px;
   padding: 10px;
   border-radius: 5px;
+  background-color: #444;
+}
+
+.profile-section h3 {
+  margin: 0 0 10px;
+  color: #ccc;
+}
+
+.profile-section p {
+  margin: 5px 0;
+}
+
+.profile-section span {
+  font-weight: bold;
+  color: #bbb;
+}
+
+/* Botones de acción en el modal */
+.modal-content .profile-button {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
   text-align: center;
-  background-color: #e0f7fa;
+  transition: background-color 0.3s ease;
+}
+
+.modal-content .profile-button:hover {
+  background-color: #0056b3;
+}
+
+/* Adaptación para pantallas pequeñas */
+@media (max-width: 600px) {
+  .modal-content {
+    width: 90%;
+    max-width: 100%;
+  }
+}
+
+
+/*=============== VEHÍCULOS ===============*/
+.vehicles__container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+.vehicle-plate {
+  font-weight: bold;
+  color: #000000; /* Color de acento */
+  margin-top: 0.1rem;
+}
+
+.vehicle-card {
+  display: flex;
+  border: 2px solid #d3d3d3;
+  border-radius: 8px;
+  padding: 1rem;
+  background-color: #fff;
+}
+
+.vehicle-info {
+  width: 40%;
+  padding: 1rem;
+  border-right: 1px solid #d3d3d3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.vehicle-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
 }
 
 .vehicle-status {
-  background-color: #fff3cd;
-  border: 2px solid yellow;
-}
-
-.vehicle-info {
-  background-color: #e3f2fd;
-  border: 2px solid lightblue;
-}
-
-.vehicle-body {
-  display: flex;
-  justify-content: space-between;
-}
-
-.vehicle-details,
-.vehicle-image {
-  width: 48%;
-  padding: 10px;
-  border-radius: 5px;
-  text-align: center;
-  background-color: #e8f5e9;
+  font-size: 1rem;
+  color: #4CAF50;
 }
 
 .vehicle-details {
-  text-align: left;
-  background-color: #d1f2eb;
-  border: 2px solid green;
+  font-size: 0.9rem;
+  color: #555;
 }
 
 .vehicle-image {
-  background-color: #ffebee;
-  border: 2px solid red;
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .vehicle-image img {
   max-width: 100%;
   height: auto;
-  display: block;
-  border-radius: 5px;
+  border-radius: 8px;
 }
 
-/* Botón para agregar vehículo */
-.add-vehicle-button {
-  display: inline-block;
-  margin: 20px 0;
-  padding: 10px 20px;
-  font-size: 16px;
+/* Modal CSS (si es necesario) */
+.modal {
+  display: none;
+  /* Mantén el modal oculto por defecto */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 8px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
   cursor: pointer;
-  background-color: #4CAF50;
-  color: white;
+}
+
+.vehicle-container {
+  background-color: #1b181e;
+}
+
+/* Botón para agregar vehículos */
+.add-vehicle-button {
+  padding: 10px 20px;
+  font-size: 1em;
+  color: #fff;
+  background-color: #137fec;
+  /* Verde para el botón */
   border: none;
   border-radius: 5px;
-  transition: background-color 0.3s ease;
+  cursor: pointer;
+  margin: 15px 0;
 }
 
 .add-vehicle-button:hover {
-  background-color: #45a049;
+  background-color: #218838;
 }
 
-/* Ajustes para dispositivos móviles */
+/*==================== SALUDO Y BOTONES ====================*/
+.welcome {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.welcome__greeting h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--title-color);
+  /* Color dorado para el saludo */
+}
+
+.welcome__greeting p {
+  font-size: 1rem;
+  color: #ffffff;
+  /* Color ámbar para el subtítulo */
+  margin-bottom: 2rem;
+}
+
+.welcome__buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.welcome__button {
+  background-color: var(--first-color);
+  /* Color tomate para los botones */
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.welcome__button:hover {
+  background-color: #a2bbfd;
+  /* Color tomate oscuro en hover */
+}
+
+/*=============== HERRAMIENTAS ===============*/
+.tools {
+  padding: 4.5rem 0;
+  background-color: var(--body-color);
+}
+
+.tools__container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.tools__card {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  color: var(--title-color-black);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tools__card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.tools__icon {
+  font-size: 2.5rem;
+  color: var(--first-color);
+  margin-bottom: 1rem;
+}
+
+.tools__title {
+  font-size: var(--h2-font-size);
+  color: var(--title-color-black);
+  margin-bottom: 0.5rem;
+}
+
+.tools__description {
+  font-size: var(--normal-font-size);
+  line-height: 1.5;
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+}
+
+.tools__button {
+  background-color: var(--first-color);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.tools__button:hover {
+  background-color: var(--first-color-dark);
+}
+
+/* Responsive */
 @media (max-width: 768px) {
+  .tools__container {
+    grid-template-columns: 1fr;
+  }
+}
 
-  .vehicle-header,
-  .vehicle-body {
-    flex-direction: column;
+/*==================== MODAL ====================*/
+/*==================== MODAL ====================*/
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  /* Fondo semitransparente oscuro */
+  justify-content: center;
+  align-items: center;
+}
+
+/* Contenido del modal */
+.modal-content {
+  background-color: #1f1f1f;
+  /* Fondo oscuro */
+  color: #ffffff;
+  /* Texto claro */
+  padding: 30px;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+  position: relative;
+  animation: fadeIn 0.3s ease;
+  /* Animación de entrada */
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
   }
 
-  .vehicle-status,
-  .vehicle-info,
-  .vehicle-details,
-  .vehicle-image {
-    width: 100%;
-    margin-bottom: 10px;
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
+}
+
+/* Botón de cierre */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: #ff4d4d;
+  /* Color de acento */
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close:hover {
+  color: #ff6666;
+}
+
+/* Títulos y etiquetas */
+.modal-content h2 {
+  color: #f2f2f2;
+  font-size: 1.8em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.modal-content label {
+  display: block;
+  font-weight: 600;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  color: #cccccc;
+}
+
+/* Estilos de los campos de entrada */
+.modal-content input[type="text"],
+.modal-content input[type="number"],
+.modal-content textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #444;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+  transition: border-color 0.3s ease;
+}
+
+.modal-content input:focus,
+.modal-content textarea:focus {
+  border-color: #ff4d4d;
+  outline: none;
+}
+
+/* Botón de guardar */
+.modal-content button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+  background-color: #ff4d4d;
+  /* Color de acento */
+  color: #ffffff;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal-content button:hover {
+  background-color: #ff6666;
 }
 
 /*=============== BREAKPOINTS ===============*/
