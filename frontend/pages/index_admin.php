@@ -81,7 +81,8 @@
                                 <th>ID</th>
                                 <th>Nombre</th>
                                 <th>Descripción</th>
-                                <th>Fecha de Creación</th>
+                                <th>Latitud</th>
+                                <th>Longitud</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -111,14 +112,15 @@
         $(document).ready(function () {
             $('#example').DataTable({
                 "ajax": {
-                    "url": "/backend/admin/get_test_data.php", // Ruta al archivo PHP que devuelve los datos
+                    "url": "/backend/conexion/leer_item.php", // Cambia la ruta si es necesario
                     "dataSrc": "data" // El array donde están los datos en la respuesta JSON
                 },
                 "columns": [
-                    { "data": "id" }, // Columna ID
-                    { "data": "nombre" }, // Columna Nombre
+                    { "data": "id" },          // Columna ID
+                    { "data": "nombre" },      // Columna Nombre
                     { "data": "descripcion" }, // Columna Descripción
-                    { "data": "fecha_creacion" } // Columna Fecha Creación
+                    { "data": "lat" },         // Columna Latitud
+                    { "data": "lon" }          // Columna Longitud
                 ],
                 "language": {
                     "url": "https://cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json"

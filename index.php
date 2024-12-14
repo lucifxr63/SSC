@@ -47,7 +47,7 @@
                         <a href="frontend/pages/login.html" class="nav__link">Inicia Sesión</a>
                     </li>
                     <li class="nav__item"> <!-- Nuevo elemento "Inicia Sesión" -->
-                        <a href="frontend/pages/index_admin.html" class="nav__link">Admin</a>
+                        <a href="frontend/pages/index_admin.php" class="nav__link">Admin</a>
                     </li>
                 </ul>
 
