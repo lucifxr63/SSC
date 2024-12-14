@@ -185,7 +185,7 @@
         $(document).ready(function () {
             const table = $('#example').DataTable({
                 "ajax": {
-                    "url": "https://ssc-production-3cb4.up.railway.app/backend/conexion/get_item_data.php",
+                    "url": "https://ssc-production-3cb4.up.railway.app/backend/admin/get_item_data.php",
                     "dataSrc": "data"
                 },
                 "columns": [
@@ -215,7 +215,7 @@
                 e.preventDefault();
 
                 $.ajax({
-                    url: "https://ssc-production-3cb4.up.railway.app/backend/conexion/add_item.php", // Backend para agregar datos
+                    url: "https://ssc-production-3cb4.up.railway.app/backend/admin/add_item.php", // Backend para agregar datos
                     method: "POST",
                     data: $(this).serialize(),
                     success: function (response) {
