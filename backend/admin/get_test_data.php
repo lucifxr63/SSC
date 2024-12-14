@@ -1,13 +1,13 @@
 <?php
 // Incluye la conexión a la base de datos
-require_once '../conexion/conexion.php'; // Asegúrate de que la ruta es correcta
+require_once '../conexion/conexion.php'; // Ajusta la ruta según tu estructura
 
 // Configurar el encabezado para devolver JSON
 header('Content-Type: application/json');
 
 try {
-    // Consulta SQL para obtener los datos de la tabla TEST
-    $query = "SELECT id, nombre, descripcion, fecha_creacion FROM test";
+    // Consulta SQL para obtener los datos de la tabla ITEM
+    $query = "SELECT id, nombre, descripcion, lat, lon FROM ITEM";
     $result = mysqli_query($db, $query);
 
     // Verificar si la consulta es válida

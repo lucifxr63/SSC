@@ -116,10 +116,11 @@
                     "dataSrc": "data"
                 },
                 "columns": [
-                    { "data": "id" },
-                    { "data": "nombre" },
-                    { "data": "descripcion" },
-                    { "data": "fecha_creacion" }
+                    { "data": "id" },          // Columna ID
+                    { "data": "nombre" },      // Columna Nombre
+                    { "data": "descripcion" }, // Columna Descripción
+                    { "data": "lat" },         // Columna Latitud
+                    { "data": "lon" }          // Columna Longitud
                 ],
                 "language": {
                     "url": "https://cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json"
