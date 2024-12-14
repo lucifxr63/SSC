@@ -112,7 +112,7 @@
         $(document).ready(function () {
             $('#example').DataTable({
                 "ajax": {
-                    "url": "/backend/conexion/leer_item.php", // Cambia la ruta si es necesario
+                    "url": "/backend/admin/get_test_data.php", // Cambia la ruta si es necesario
                     "dataSrc": "data" // El array donde están los datos en la respuesta JSON
                 },
                 "columns": [
