@@ -13,141 +13,12 @@
 
     <!--=============== CSS ===============-->
     <link rel="stylesheet" href="../assets/css/styles.css">
-
+    <link rel="stylesheet" href="../assets/css/modal/modal_agregados.css">
     <!-- DataTables CSS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 
     <title>Tabla ITEM - DataTables</title>
 
-    <style>
-        /* Estilos mejorados para el botón flotante */
-        .floating-button {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            background: linear-gradient(135deg, #007bff, #0056b3);
-            color: #fff;
-            border: none;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            cursor: pointer;
-            z-index: 1000;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .floating-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-        }
-
-        .floating-button i {
-            font-size: 24px;
-        }
-
-        /* Estilos mejorados para el modal */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1001;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(5px);
-            animation: fadeIn 0.3s ease-out;
-        }
-
-        .modal-content {
-            background: #f9f9f9;
-            margin: 10% auto;
-            padding: 30px;
-            border-radius: 16px;
-            width: 40%;
-            max-width: 600px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            animation: slideDown 0.3s ease-out;
-        }
-
-        .modal-content h2 {
-            margin-bottom: 20px;
-            font-size: 24px;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .modal-content form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            width: 100%;
-        }
-
-        .modal-content form input {
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            font-size: 16px;
-        }
-
-        .modal-content form button {
-            padding: 12px;
-            background: linear-gradient(135deg, #007bff, #0056b3);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        .modal-content form button:hover {
-            background: linear-gradient(135deg, #0056b3, #003f7f);
-        }
-
-        .modal-content .close {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            color: #aaa;
-            font-size: 24px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-
-        .modal-content .close:hover {
-            color: #333;
-        }
-
-        /* Animaciones */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideDown {
-            from {
-                transform: translateY(-50px);
-            }
-
-            to {
-                transform: translateY(0);
-            }
-        }
-    </style>
 
 </head>
 
@@ -192,12 +63,14 @@
                                 <th>Descripción</th>
                                 <th>Latitud</th>
                                 <th>Longitud</th>
+                                <th>Acciones</th> <!-- Nueva columna -->
                             </tr>
                         </thead>
                         <tbody>
                             <!-- Los datos serán cargados dinámicamente por DataTables -->
                         </tbody>
                     </table>
+
                 </div>
             </div>
         </section>
@@ -223,6 +96,23 @@
         </div>
     </div>
 
+    <!-- Modal para editar datos -->
+    <div id="editItemModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeEditModalButton">&times;</span>
+            <h2>Editar ITEM</h2>
+            <form id="editItemForm">
+                <input type="hidden" name="id" required> <!-- Campo oculto para el ID -->
+                <input type="text" name="nombre" placeholder="Nombre" required>
+                <input type="text" name="descripcion" placeholder="Descripción" required>
+                <input type="number" step="any" name="lat" placeholder="Latitud" required>
+                <input type="number" step="any" name="lon" placeholder="Longitud" required>
+                <button type="submit">Guardar Cambios</button>
+            </form>
+        </div>
+    </div>
+
+
     <!--=============== SCRIPTS ===============-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
@@ -238,39 +128,84 @@
                     { "data": "nombre" },
                     { "data": "descripcion" },
                     { "data": "lat" },
-                    { "data": "lon" }
+                    { "data": "lon" },
+                    {
+                        "data": null, // Columna para acciones
+                        "render": function (data, type, row) {
+                            return `
+                        <button class="edit-btn" data-id="${row.id}" data-nombre="${row.nombre}" data-descripcion="${row.descripcion}" data-lat="${row.lat}" data-lon="${row.lon}">Editar</button>
+                        <button class="delete-btn" data-id="${row.id}">Eliminar</button>
+                    `;
+                        },
+                        "orderable": false, // Deshabilitar orden en la columna de acciones
+                        "searchable": false // Deshabilitar búsqueda en la columna de acciones
+                    }
                 ],
                 "language": {
                     "url": "https://cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json"
                 }
             });
 
-            // Abrir modal
-            $('#openModalButton').click(function () {
-                $('#addItemModal').css('display', 'block');
+            // Evento para el botón de eliminar
+            $('#example').on('click', '.delete-btn', function () {
+                const id = $(this).data('id');
+                if (confirm('¿Estás seguro de que deseas eliminar este registro?')) {
+                    $.ajax({
+                        url: "/backend/admin/delete_item.php", // Ruta al backend de eliminación
+                        method: "POST",
+                        data: { id: id },
+                        success: function (response) {
+                            if (response.success) {
+                                alert('ITEM eliminado exitosamente.');
+                                table.ajax.reload(); // Recargar la tabla
+                            } else {
+                                alert('Error al eliminar el ITEM: ' + response.message);
+                            }
+                        },
+                        error: function () {
+                            alert('Error al conectar con el servidor.');
+                        }
+                    });
+                }
             });
 
-            // Cerrar modal
-            $('#closeModalButton').click(function () {
-                $('#addItemModal').css('display', 'none');
+            // Evento para el botón de editar
+            $('#example').on('click', '.edit-btn', function () {
+                const id = $(this).data('id');
+                const nombre = $(this).data('nombre');
+                const descripcion = $(this).data('descripcion');
+                const lat = $(this).data('lat');
+                const lon = $(this).data('lon');
+
+                // Abrir modal de edición con los valores prellenados
+                $('#editItemModal').css('display', 'block');
+                $('#editItemForm input[name="id"]').val(id);
+                $('#editItemForm input[name="nombre"]').val(nombre);
+                $('#editItemForm input[name="descripcion"]').val(descripcion);
+                $('#editItemForm input[name="lat"]').val(lat);
+                $('#editItemForm input[name="lon"]').val(lon);
             });
 
-            // Enviar formulario
-            $('#addItemForm').submit(function (e) {
+            // Cerrar modal de edición
+            $('#closeEditModalButton').click(function () {
+                $('#editItemModal').css('display', 'none');
+            });
+
+            // Enviar formulario de edición
+            $('#editItemForm').submit(function (e) {
                 e.preventDefault();
 
                 $.ajax({
-                    url: "/backend/admin/add_item.php", // Backend para agregar datos
+                    url: "/backend/admin/edit_item.php", // Backend para editar datos
                     method: "POST",
                     data: $(this).serialize(),
                     success: function (response) {
                         if (response.success) {
-                            alert('ITEM agregado exitosamente.');
+                            alert('ITEM editado exitosamente.');
                             table.ajax.reload(); // Recargar la tabla
-                            $('#addItemModal').css('display', 'none'); // Cerrar modal
-                            $('#addItemForm')[0].reset(); // Resetear formulario
+                            $('#editItemModal').css('display', 'none'); // Cerrar modal
                         } else {
-                            alert('Error al agregar el ITEM: ' + response.message);
+                            alert('Error al editar el ITEM: ' + response.message);
                         }
                     },
                     error: function () {
@@ -279,6 +214,7 @@
                 });
             });
         });
+
     </script>
 
 </body>
