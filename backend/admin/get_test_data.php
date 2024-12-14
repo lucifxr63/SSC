@@ -1,33 +1,33 @@
 <?php
 // Incluye la conexión a la base de datos
-require_once '../conexion/conexion.php'; // Ajusta la ruta según la ubicación de tu archivo conexion.php
+require_once '../conexion/conexion.php'; // Asegúrate de que la ruta es correcta
 
-// Configurar encabezado para devolver JSON
+// Configurar el encabezado para devolver JSON
 header('Content-Type: application/json');
 
 try {
-    // Consulta SQL para obtener los datos de la tabla ITEM
-    $query = "SELECT id, nombre, descripcion, lat, lon FROM ITEM";
+    // Consulta SQL para obtener los datos de la tabla TEST
+    $query = "SELECT id, nombre, descripcion, fecha_creacion FROM test";
     $result = mysqli_query($db, $query);
 
-    // Verifica si hay resultados
+    // Verificar si la consulta es válida
     if (!$result) {
         throw new Exception("Error en la consulta: " . mysqli_error($db));
     }
 
-    // Crear un arreglo para almacenar los datos
+    // Crear un arreglo para almacenar los resultados
     $data = [];
     while ($row = mysqli_fetch_assoc($result)) {
-        $data[] = $row; // Añadir cada fila al arreglo
+        $data[] = $row; // Agregar cada fila al arreglo
     }
 
-    // Devolver los datos en formato JSON
+    // Enviar la respuesta como JSON
     echo json_encode([
         "success" => true,
         "data" => $data
     ]);
 } catch (Exception $e) {
-    // Si ocurre un error, devolver el mensaje de error en formato JSON
+    // Si ocurre un error, devolverlo como JSON
     echo json_encode([
         "success" => false,
         "message" => $e->getMessage()

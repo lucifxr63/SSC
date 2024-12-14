@@ -112,21 +112,21 @@
         $(document).ready(function () {
             $('#example').DataTable({
                 "ajax": {
-                    "url": "/backend/admin/get_test_data.php", // Cambia la ruta si es necesario
-                    "dataSrc": "data" // El array donde están los datos en la respuesta JSON
+                    "url": "https://ssc-production-3cb4.up.railway.app/backend/admin/get_test_data.php",
+                    "dataSrc": "data"
                 },
                 "columns": [
-                    { "data": "id" },          // Columna ID
-                    { "data": "nombre" },      // Columna Nombre
-                    { "data": "descripcion" }, // Columna Descripción
-                    { "data": "lat" },         // Columna Latitud
-                    { "data": "lon" }          // Columna Longitud
+                    { "data": "id" },
+                    { "data": "nombre" },
+                    { "data": "descripcion" },
+                    { "data": "fecha_creacion" }
                 ],
                 "language": {
                     "url": "https://cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json"
                 }
             });
         });
+
     </script>
 
 </body>
