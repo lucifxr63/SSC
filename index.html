@@ -65,6 +65,7 @@
 
     <!--==================== MAIN ====================-->
     <main class="main">
+        
         <!--==================== HOME ====================-->
         <section class="home section" id="home">
             <div class="home__container container grid">
@@ -212,7 +213,8 @@
                     </div>
 
                     <div class="choose__images">
-                        <img src="frontend/assets/img/vehicle_security.png" alt="imagen de elección" class="choose__img">
+                        <img src="frontend/assets/img/vehicle_security.png" alt="imagen de elección"
+                            class="choose__img">
 
                         <div class="choose__triangle choose__triangle-1" style="background-color: #00509E;"></div>
                         <div class="choose__triangle choose__triangle-2" style="background-color: #003366;"></div>
@@ -569,6 +571,32 @@
 
         <!--=============== MAIN JS ===============-->
         <script src="frontend/assets/js/main.js"></script>
+
+
+        <script>
+            // Función para llamar a test_connection.php
+            function checkDatabaseConnection() {
+                fetch('backend/conexion/test_connection.php') // Ajusta la ruta si es necesario
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Error al conectar con el servidor: ' + response.status);
+                        }
+                        return response.text(); // Obtener el contenido como texto
+                    })
+                    .then(data => {
+                        // Mostrar el mensaje en un alert
+                        alert(data); // O reemplazar alert con otra funcionalidad, como insertar en el DOM
+                    })
+                    .catch(error => {
+                        // Manejar errores
+                        alert('Hubo un problema al verificar la conexión: ' + error.message);
+                    });
+            }
+
+            // Llama a la función al cargar la página o al hacer clic en un botón
+            checkDatabaseConnection();
+
+        </script>
 </body>
 
 </html>
