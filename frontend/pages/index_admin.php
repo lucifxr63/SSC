@@ -20,12 +20,12 @@
     <title>Tabla ITEM - DataTables</title>
 
     <style>
-        /* Estilos para el botón flotante */
+        /* Estilos mejorados para el botón flotante */
         .floating-button {
             position: fixed;
             bottom: 20px;
             left: 20px;
-            background-color: #007bff;
+            background: linear-gradient(135deg, #007bff, #0056b3);
             color: #fff;
             border: none;
             border-radius: 50%;
@@ -34,16 +34,22 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             cursor: pointer;
             z-index: 1000;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .floating-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
         }
 
         .floating-button i {
             font-size: 24px;
         }
 
-        /* Estilos para el modal */
+        /* Estilos mejorados para el modal */
         .modal {
             display: none;
             position: fixed;
@@ -52,58 +58,97 @@
             top: 0;
             width: 100%;
             height: 100%;
-            overflow: auto;
             background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease-out;
         }
 
         .modal-content {
-            background-color: #fff;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            width: 50%;
+            background: #f9f9f9;
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: 16px;
+            width: 40%;
+            max-width: 600px;
             text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            animation: slideDown 0.3s ease-out;
         }
 
         .modal-content h2 {
             margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
         }
 
         .modal-content form {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 15px;
+            width: 100%;
         }
 
         .modal-content form input {
-            padding: 8px;
+            padding: 12px;
             border: 1px solid #ccc;
-            border-radius: 4px;
+            border-radius: 8px;
+            font-size: 16px;
         }
 
         .modal-content form button {
-            padding: 10px;
-            background-color: #007bff;
-            color: #fff;
+            padding: 12px;
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
             border: none;
-            border-radius: 4px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
             cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .modal-content form button:hover {
+            background: linear-gradient(135deg, #0056b3, #003f7f);
         }
 
         .modal-content .close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
             color: #aaa;
-            float: right;
-            font-size: 28px;
+            font-size: 24px;
             font-weight: bold;
             cursor: pointer;
+            transition: color 0.3s ease;
         }
 
-        .modal-content .close:hover,
-        .modal-content .close:focus {
-            color: black;
+        .modal-content .close:hover {
+            color: #333;
+        }
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+            }
+
+            to {
+                transform: translateY(0);
+            }
         }
     </style>
+
 </head>
 
 <body>
