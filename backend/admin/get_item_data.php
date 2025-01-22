@@ -2,10 +2,18 @@
 // Incluye la conexión a la base de datos
 require_once '../conexion/conexion.php'; // Ajusta la ruta según tu estructura
 
-// Configurar el encabezado para devolver JSON
+// Configurar encabezados
 header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *'); // Permitir solicitudes desde cualquier origen (ajusta según tus necesidades)
+header('Access-Control-Allow-Methods: GET');
+header('Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');
 
 try {
+    // Verificar si la conexión a la base de datos está activa
+    if (!$db) {
+        throw new Exception("Error al conectar a la base de datos.");
+    }
+
     // Consulta SQL para obtener los datos de la tabla ITEM
     $query = "SELECT id, nombre, descripcion, lat, lon FROM ITEM";
     $result = mysqli_query($db, $query);
@@ -24,6 +32,7 @@ try {
     // Enviar la respuesta como JSON
     echo json_encode([
         "success" => true,
+        "count" => count($data),
         "data" => $data
     ]);
 } catch (Exception $e) {
@@ -33,3 +42,4 @@ try {
         "message" => $e->getMessage()
     ]);
 }
+?>
